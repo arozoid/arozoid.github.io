@@ -1,0 +1,115 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arozoid</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f0f1a;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            overflow: hidden;
+        }
+        /* Pure animated dotted grid – nothing else */
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, #64748b 1.5px, transparent 1.5px);
+            background-size: 50px 50px;
+            background-position: 0 0;
+            animation: drift 8s linear infinite;
+            opacity: 0.5;
+        }
+        @keyframes drift {
+            from { background-position: 0 0; }
+            to { background-position: -50px -50px; }
+        }
+        .card {
+            background: rgba(20, 25, 40, 0.92);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(120, 170, 255, 0.3);
+            border-radius: 20px;
+            padding: 3rem 4rem;
+            max-width: 420px;
+            width: 90%;
+            color: #cdd6f4;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            z-index: 1;
+            text-align: center;
+            animation: float 5s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #89b4fa, #cba6f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+        .tagline {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+        .projects { margin-top: 2rem; text-align: left; }
+        .project {
+            background: rgba(100, 150, 255, 0.12);
+            border-left: 4px solid #89b4fa;
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        .project:hover {
+            background: rgba(100, 150, 255, 0.22);
+            transform: translateX(8px);
+        }
+        .project h3 {
+            color: #cba6f7;
+            margin-bottom: 0.4rem;
+            font-size: 1.3rem;
+        }
+        .links {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 1.1rem;
+        }
+        .links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .links a:hover { color: #cba6f7; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>arozoid</h1>
+        <p class="tagline">aspiring game developer</p>
+        <div class="projects">
+            <div class="project">
+                <h3>current project: cropbots</h3>
+                <p>upcoming coding education game releasing early 2026</p>
+            </div>
+        </div>
+        <div class="links">
+            <a href="https://github.com/arozoid" target="_blank">github</a>
+            <a href="https://youtube.com/arozoid" target="_blank">youtube</a>
+            <a href="https://discord.gg/Q6d9tuSqmN" target="_blank">discord</a>
+        </div>
+    </div>
+
+</body></html>
