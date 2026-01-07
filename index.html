@@ -1,4 +1,6 @@
-<html lang="en"><head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>arozoid</title>
@@ -16,6 +18,7 @@
         /* Pure animated dotted grid – nothing else */
         body::before {
             content: '';
+            pointer-events: none;
             position: absolute;
             inset: 0;
             background-image: radial-gradient(circle, #64748b 1.5px, transparent 1.5px);
@@ -57,7 +60,7 @@
             letter-spacing: -1px;
         }
         .tagline {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #94a3b8;
             margin-bottom: 2rem;
         }
@@ -96,23 +99,116 @@
             transition: color 0.3s;
         }
         .links a:hover { color: #cba6f7; }
+        .guides {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .guides-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            font: inherit;
+            color: #94a3b8;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: color 0.25s;
+        }
+        
+        .guides-btn:hover,
+        .guides-btn:focus {
+            color: #cba6f7;
+        }
+        
+        /* caret styling */
+        .caret {
+            display: inline-block;
+            font-size: 0.9em;
+            transform-origin: center;
+            transition: transform 0.25s ease;
+            line-height: 1;
+        }
+        
+        /* rotate caret when open */
+        .guides.open .caret {
+            transform: rotate(180deg);
+        }
+        
+        
+        /* dropdown */
+        .guides-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            margin-top: 0.6rem;
+        
+            background: rgba(20, 25, 40, 0.95);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(120, 170, 255, 0.3);
+            border-radius: 12px;
+            min-width: 220px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            z-index: 10;
+        }
+        
+        .guides-menu a {
+            display: block;
+            padding: 0.9rem 1.2rem;
+            color: #94a3b8;
+            text-decoration: none;
+        }
+        
+        .guides-menu a:hover {
+            background: rgba(100, 150, 255, 0.18);
+            color: #cba6f7;
+        }
+        
+        /* OPEN STATE */
+        .guides.open .guides-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
     </style>
 </head>
+
 <body>
     <div class="card">
         <h1>arozoid</h1>
-        <p class="tagline">aspiring game developer</p>
-        <div class="projects">
-            <a href="https://github.com/cropbots/game" class="project">
+        <p class="tagline">aspiring game/systems developer</p>
+        <div class="projects"> <a href="https://github.com/cropbots/game" class="project">
                 <h3>current project: cropbots</h3>
                 <p>upcoming coding education game releasing early 2026</p>
-            </a>
-        </div>
-        <div class="links">
-            <a href="https://github.com/arozoid" target="_blank">github</a>
-            <a href="https://youtube.com/arozoid" target="_blank">youtube</a>
-            <a href="https://discord.gg/Q6d9tuSqmN" target="_blank">discord</a>
+            </a> </div>
+        <div class="links"> <a href="https://github.com/arozoid" target="_blank">github</a> <a href="https://youtube.com/arozoid" target="_blank">youtube</a>
+            <div class="guides"> <button class="guides-btn" aria-expanded="false"> guides <span class="caret">⌄</span> </button>
+                <div class="guides-menu"> <a href="https://paint-hub-11d.notion.site/Linux-on-Android-Full-Guide-2bd8eb79935580099964c7e6704a07c3">linux on android</a> <a href="https://paint-hub-11d.notion.site/Waydroid-on-Linux-Full-Guide-2bb8eb799355803eb033c80454e8473a">waydroid on linux</a> </div>
+            </div> <a href="https://discord.gg/Q6d9tuSqmN" target="_blank">discord</a>
         </div>
     </div>
+    <script>
+        const guides = document.querySelector('.guides');
+        const btn = guides.querySelector('.guides-btn');
+        
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const open = guides.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open);
+        });
+        
+        document.addEventListener('click', () => {
+          guides.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+    </script>
+</body>
 
-</body></html>
+</html>
