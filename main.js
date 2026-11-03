@@ -20,7 +20,7 @@ const filesystem = {
                         type: 'file',
                         content: [
                             { text: 'arozoid', color: 'blue-text' },
-                            { text: 'aspiring game/systems developer' },
+                            { text: 'aspiring software / systems developer' },
                             { text: '' },
 
                             { text: 'navigation:', color: 'yellow-text' },
