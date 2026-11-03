@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg: #111318;
+    --text: #cdd6df;
+    --muted: #858f9e;
+    --green: #a6d189;
+    --blue: #8caaee;
+    --purple: #ca9ee6;
+    --yellow: #e5c890;
+    --red: #e78284;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    background: var(--bg);
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+#terminal {
+    width: 100%;
+    min-height: 100vh;
+    padding: 24px 28px;
+    overflow-wrap: anywhere;
+}
+
+#output {
+    white-space: pre-wrap;
+}
+
+.output-group {
+    margin-bottom: 0;
+}
+
+.output-line {
+    min-height: 1.4em;
+    white-space: pre-wrap;
+}
+
+.prompt {
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.user {
+    color: var(--green);
+}
+
+.cwd {
+    color: var(--blue);
+}
+
+.green-text {
+    color: var(--green);
+}
+
+.blue-text,
+.directory {
+    color: var(--blue);
+}
+
+.purple-text {
+    color: var(--purple);
+}
+
+.yellow-text {
+    color: var(--yellow);
+}
+
+.red-text {
+    color: var(--red);
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.file {
+    color: var(--text);
+}
+
+#input-form {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    width: 100%;
+}
+
+#command {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font: inherit;
+    caret-color: var(--green);
+}
+
+.terminal-link {
+    color: var(--blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.terminal-link:hover {
+    color: var(--green);
+}
+
+a {
+    overflow-wrap: anywhere;
+}
+
+::selection {
+    background: #8caaee55;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    #terminal {
+        padding: 16px;
+    }
+
+    body {
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+    }
+}
